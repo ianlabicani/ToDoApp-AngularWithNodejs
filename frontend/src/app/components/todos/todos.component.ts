@@ -22,4 +22,9 @@ export class TodosComponent implements OnInit {
         () => (this.todos = this.todos.filter((todo) => todo.id !== ARGtodo.id))
       );
   }
+
+  onToggleToDoPriority(ARGtodo: ITodo) {
+    ARGtodo.isHighPriority = !ARGtodo.isHighPriority;
+    this.todoService.toggleToDoPriority(ARGtodo).subscribe();
+  }
 }

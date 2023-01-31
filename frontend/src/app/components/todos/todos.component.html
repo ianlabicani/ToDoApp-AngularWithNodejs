@@ -2,4 +2,5 @@
   *ngFor="let todo of todos"
   [todo]="todo"
   (deleteToDo)="onDeleteToDo(todo)"
+  (toggleToDoPriority)="onToggleToDoPriority(todo)"
 ></todo-item>
