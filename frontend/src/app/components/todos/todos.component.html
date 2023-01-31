@@ -1,1 +1,5 @@
-<todo-item *ngFor="let todo of todos" [todo]="todo"></todo-item>
+<todo-item
+  *ngFor="let todo of todos"
+  [todo]="todo"
+  (deleteToDo)="onDeleteToDo(todo)"
+></todo-item>
