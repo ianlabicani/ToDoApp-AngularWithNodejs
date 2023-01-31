@@ -13,13 +13,15 @@ const toDosSchema = {
 	description: String,
 	isHighPriority: Boolean,
 };
-const toDo = mongoose.model("todo", toDosSchema);
+const ToDo = mongoose.model("todo", toDosSchema);
 
+// middlewares
 app.use(cors());
 app.use(express.json());
 
+// routes
 app.get("/api/todos", (req, res) => {
-	toDo.find({}, (err, todos) => {
+	ToDo.find({}, (err, todos) => {
 		if (err) {
 			console.log("Error: ", err);
 		} else {
@@ -28,6 +30,34 @@ app.get("/api/todos", (req, res) => {
 	});
 });
 
+app.delete("/api/todo/:id", (req, res) => {
+	ToDo.findOneAndDelete({ id: req.params.id }, (err, todo) => {
+		if (err) {
+			console.log("Error: ", err);
+		} else {
+			console.log("Deleted Successfully.");
+			res.send(todo);
+		}
+	});
+});
+
+app.put("/api/todo/:id", (req, res) => {
+	ToDo.findOneAndUpdate(
+		{ id: req.params.id },
+		req.body,
+		{ new: true },
+		(err, todo) => {
+			if (err) {
+				console.log("Error: ", err);
+			} else {
+				console.log("Updated Successfully.");
+				res.send(todo);
+			}
+		}
+	);
+});
+
+// server start
 app.listen(3000, (err) => {
 	if (err) {
 		console.log("errpr :", err);
