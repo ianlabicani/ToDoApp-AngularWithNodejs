@@ -27,4 +27,8 @@ export class TodosComponent implements OnInit {
     ARGtodo.isHighPriority = !ARGtodo.isHighPriority;
     this.todoService.toggleToDoPriority(ARGtodo).subscribe();
   }
+
+  onAddToDo(ARGtodo: any) {
+    console.log(ARGtodo);
+  }
 }
