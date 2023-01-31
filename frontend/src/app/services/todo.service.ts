@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { ITodo } from './todo';
 import { todos } from './mock-todos';
 
@@ -8,7 +9,7 @@ import { todos } from './mock-todos';
 export class TodoService {
   constructor() {}
 
-  getToDos(): ITodo[] {
-    return todos;
+  getToDos(): Observable<ITodo[]> {
+    return of(todos);
   }
 }
