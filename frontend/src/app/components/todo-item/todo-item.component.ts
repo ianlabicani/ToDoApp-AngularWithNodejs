@@ -9,11 +9,16 @@ import { ITodo } from 'src/app/services/todo';
 export class TodoItemComponent implements OnInit {
   @Input() todo: ITodo | null = null;
   @Output() deleteToDo: EventEmitter<ITodo> = new EventEmitter();
+  @Output() toggleToDoPriority: EventEmitter<ITodo> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
 
   onDelete() {
     this.deleteToDo.emit();
+  }
+
+  onToggleToDoPriority() {
+    this.toggleToDoPriority.emit();
   }
 }
