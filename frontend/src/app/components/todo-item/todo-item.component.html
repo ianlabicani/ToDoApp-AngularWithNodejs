@@ -1,7 +1,7 @@
 <div class="todo-card {{ todo?.isHighPriority ? 'high-priority' : '' }}">
   <button (click)="onDelete()">x</button>
   <button (click)="onToggleToDoPriority()">
-    {{ todo?.isHighPriority ? "as high" : "as low" }}
+    {{ todo?.isHighPriority ? "as low" : "as high" }}
   </button>
   <h1>{{ todo?.name }}</h1>
   <p>{{ todo?.description }}</p>
