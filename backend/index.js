@@ -1,14 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const { v4: uuidv4 } = require("uuid");
 
 const app = express();
 
 mongoose.connect("mongodb://localhost:27017/todolistDB");
 
 const toDosSchema = {
-	id: Number,
+	id: String,
 	name: String,
 	description: String,
 	isHighPriority: Boolean,
@@ -22,9 +21,7 @@ app.use(express.json());
 // routes
 app.get("/api/todos", (req, res) => {
 	ToDo.find({}, (err, todos) => {
-		if (err) {
-			console.log("Error: ", err);
-		} else {
+		if (!err) {
 			res.send(todos);
 		}
 	});
@@ -32,10 +29,7 @@ app.get("/api/todos", (req, res) => {
 
 app.delete("/api/todo/:id", (req, res) => {
 	ToDo.findOneAndDelete({ id: req.params.id }, (err, todo) => {
-		if (err) {
-			console.log("Error: ", err);
-		} else {
-			console.log("Deleted Successfully.");
+		if (!err) {
 			res.send(todo);
 		}
 	});
@@ -47,21 +41,25 @@ app.put("/api/todo/:id", (req, res) => {
 		req.body,
 		{ new: true },
 		(err, todo) => {
-			if (err) {
-				console.log("Error: ", err);
-			} else {
-				console.log("Updated Successfully.");
+			if (!err) {
 				res.send(todo);
 			}
 		}
 	);
 });
 
+app.post("/api/todos", (req, res) => {
+	const todo = new ToDo(req.body);
+	todo.save((err, todo) => {
+		if (!err) {
+			res.send(todo);
+		}
+	});
+});
+
 // server start
 app.listen(3000, (err) => {
-	if (err) {
-		console.log("errpr :", err);
-	} else {
+	if (!err) {
 		console.log("Server started at port 3000.");
 	}
 });
