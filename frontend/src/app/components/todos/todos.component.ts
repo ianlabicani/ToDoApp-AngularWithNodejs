@@ -31,6 +31,6 @@ export class TodosComponent implements OnInit {
   onAddToDo(ARGtodo: ITodo) {
     this.todoService
       .addToDo(ARGtodo)
-      .subscribe((todo) => this.todos.push(todo));
+      .subscribe((todo) => this.todos.unshift(todo));
   }
 }
