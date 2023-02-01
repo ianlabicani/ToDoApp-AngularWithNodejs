@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-mongoose.connect("mongodb://localhost:27017/todolistDB");
+mongoose.connect(
+	"mongodb+srv://admin:admin123@cluster0.recaacx.mongodb.net/todoDB"
+);
 
 const toDosSchema = {
 	id: String,
