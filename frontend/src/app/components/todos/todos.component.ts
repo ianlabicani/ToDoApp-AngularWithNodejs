@@ -28,7 +28,9 @@ export class TodosComponent implements OnInit {
     this.todoService.toggleToDoPriority(ARGtodo).subscribe();
   }
 
-  onAddToDo(ARGtodo: any) {
-    console.log(ARGtodo);
+  onAddToDo(ARGtodo: ITodo) {
+    this.todoService
+      .addToDo(ARGtodo)
+      .subscribe((todo) => this.todos.push(todo));
   }
 }

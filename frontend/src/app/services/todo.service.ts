@@ -30,4 +30,9 @@ export class TodoService {
     const url = `${this.apiUrl}/todo/${todo.id}`;
     return this.httpClient.put<ITodo>(url, todo);
   }
+
+  addToDo(todo: ITodo): Observable<ITodo> {
+    const url = `${this.apiUrl}/todos`;
+    return this.httpClient.post<ITodo>(url, todo);
+  }
 }
