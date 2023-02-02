@@ -4,6 +4,6 @@
   "scripts": {
     "start": "cd backend && node index.js",
     "prebuild": "cd backend && npm install",
-    "build": "cd frontend && ng build"
+    "build": "cd frontend && npm run build"
   }
 }
