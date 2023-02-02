@@ -13,7 +13,7 @@ import { ITodo } from './todo';
   providedIn: 'root',
 })
 export class TodoService {
-  private apiUrl: string = 'http://localhost:3000/api';
+  private apiUrl: string = 'https://to-to-app-backend.onrender.com/api';
 
   constructor(private httpClient: HttpClient) {}
 
