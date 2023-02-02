@@ -1,7 +1,0 @@
-<add-todo (addToDo)="onAddToDo($event)"></add-todo>
-<todo-item
-  *ngFor="let todo of todos"
-  [todo]="todo"
-  (deleteToDo)="onDeleteToDo(todo)"
-  (toggleToDoPriority)="onToggleToDoPriority(todo)"
-></todo-item>

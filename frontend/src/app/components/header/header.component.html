@@ -1,9 +1,0 @@
-<header>
-  <h1>To Do List</h1>
-  <custom-button
-    *ngIf="hasRouter('/')"
-    color="{{ showAddToDo ? 'red' : 'green' }}"
-    text="{{ showAddToDo ? 'Close' : 'Add' }}"
-    (click)="toggleAddToDo()"
-  ></custom-button>
-</header>
