@@ -1,0 +1,9 @@
+{
+  "name": "to-do-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cd backend && node index.js",
+    "prebuild": "cd backend && npm install",
+    "build": "cd frontend && ng build"
+  }
+}
