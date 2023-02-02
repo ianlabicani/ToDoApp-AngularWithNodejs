@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UiService } from 'src/app/services/ui.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import { UiService } from 'src/app/services/ui.service';
 export class HeaderComponent implements OnInit {
   showAddToDo: boolean = false;
   subscription = new Subscription();
-  constructor(private uiService: UiService) {
+  constructor(private uiService: UiService, private router: Router) {
     this.subscription = this.uiService
       .AddToDoToggler()
       .subscribe((showAddToDo) => (this.showAddToDo = showAddToDo));
@@ -20,5 +21,8 @@ export class HeaderComponent implements OnInit {
 
   toggleAddToDo() {
     this.uiService.toggleAddToDo();
+  }
+  hasRouter(url: string): boolean {
+    return this.router.url == url;
   }
 }
