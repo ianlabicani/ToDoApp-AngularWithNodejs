@@ -1,4 +1,9 @@
-<form [formGroup]="addToDoForm" class="form-group" (ngSubmit)="onAddToDo()">
+<form
+  *ngIf="showAddToDo"
+  [formGroup]="addToDoForm"
+  class="form-group"
+  (ngSubmit)="onAddToDo()"
+>
   <div class="form-control">
     <label for="name"> Name: </label>
     <br />
